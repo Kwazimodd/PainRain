@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public class Monster: BaseEntity
 {
-    [SerializeField] private int _damage;
+    [SerializeField] private uint _damage;
     
     private void MoveTo(Vector2 point)
     {
@@ -25,7 +25,7 @@ public class Monster: BaseEntity
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<BaseEntity>().GetDamage((uint)_damage);
+            other.gameObject.GetComponent<BaseEntity>().GetDamage(_damage);
             other.rigidbody.AddForce(-rigidbody2D.velocity.normalized, ForceMode2D.Impulse);
         }
     }
