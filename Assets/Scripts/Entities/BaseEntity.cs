@@ -8,8 +8,8 @@ using UnityEngine.EventSystems;
 
 public abstract class BaseEntity : MonoBehaviour
 {
-    protected Rigidbody2D rigidbody2D;
-    protected Collider2D collider2D;
+    protected new Rigidbody2D rigidbody2D;
+    protected new Collider2D collider2D;
     [SerializeField] protected int health;
     [SerializeField] protected float moveSpeed;
 
@@ -17,11 +17,6 @@ public abstract class BaseEntity : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         collider2D = GetComponent<Collider2D>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        
     }
 
     public virtual void GetDamage(uint damage)

@@ -7,6 +7,6 @@ public class PaperItem: BaseItem
 {
     public override void Interaction()
     {
-        
+        Debug.Log("123");
     }
 }
