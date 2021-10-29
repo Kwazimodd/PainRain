@@ -9,16 +9,17 @@ using UnityEngine.InputSystem;
 public class Monster: BaseEntity
 {
     [SerializeField] private uint _damage;
+    [SerializeField] private GameObject Player;
     
     private void MoveTo(Vector2 point)
     {
-        Vector3 monsterPosition = rigidbody2D.transform.position;
-        rigidbody2D.velocity = new Vector2(point.x - monsterPosition.x, point.y - monsterPosition.y)*moveSpeed;
+        Vector3 monsterPosition = _rigidbody2D.transform.position;
+        _rigidbody2D.velocity = new Vector2(point.x - monsterPosition.x, point.y - monsterPosition.y)*moveSpeed;
     }
 
     private void Update()
     {
-        MoveTo(GameObject.FindWithTag("Player").transform.position);
+        MoveTo(Player.transform.position);
     }
 
     private void OnColliderEnter2D(Collision2D other)
@@ -26,7 +27,7 @@ public class Monster: BaseEntity
         if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<BaseEntity>().GetDamage(_damage);
-            other.rigidbody.AddForce(-rigidbody2D.velocity.normalized, ForceMode2D.Impulse);
+            other.rigidbody.AddForce(-_rigidbody2D.velocity.normalized, ForceMode2D.Impulse);
         }
     }
 }
