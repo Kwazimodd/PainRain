@@ -4,18 +4,33 @@ using UnityEngine;
 
 public class Spawner: MonoBehaviour
 {
-    private CircleCollider2D _collider2D;
-    [SerializeField] private GameObject _spawnCenter;
-    [SerializeField] private GameObject _spawnObject;
+    [SerializeField] private Transform _spawnCenter;
+    [SerializeField] private GameObject[] _spawnObjects;
+
     [SerializeField] private float _spawnCooldown;
+
+    [SerializeField] private float _spawnRadiusStart;
+    [SerializeField] private float _spawnRadiusEnd;
+
+    [SerializeField] private int _spawnEntitiesCount;
+
 
     private void Awake()
     {
-        _collider2D = GetComponent<CircleCollider2D>();
     }
 
-    private void Spawn(Vector2 spawnPoint)
+    private void Start()
     {
-        Instantiate(_spawnObject, spawnPoint, Quaternion.identity);
+        
+    }
+
+    private void Spawn(Vector2 spawnPoint, int indexOfObject)
+    {
+        Instantiate(_spawnObjects[indexOfObject], spawnPoint, Quaternion.identity);
+    }
+
+    private void Spawn() 
+    {
+
     }
 }

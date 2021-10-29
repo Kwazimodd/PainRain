@@ -27,7 +27,7 @@
                     "name": "2D Vector",
                     "id": "62a1adcf-33cb-4d33-a5c4-4c85516d593c",
                     "path": "2DVector",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
