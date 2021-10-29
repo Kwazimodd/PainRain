@@ -2,29 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Finder<T>: MonoBehaviour
+public class ItemsFinder: MonoBehaviour
 {
-    private List<BaseItem> visibleItemsList = new List<BaseItem>();
-
+    private List<GameObject> visibleItemsTagsList = new List<GameObject>();
+    
+    
     private void OnInteraction()
     {
-        if (visibleItemsList.Count == 0) return;
-        visibleItemsList[0].gameObject.GetComponent<BaseItem>().Interaction();
+        if (visibleItemsTagsList.Count == 0) return;
+        visibleItemsTagsList[0].GetComponent<BaseItem>().Interaction();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player") && TryGetComponent(typeof(BaseItem), out Component component))
+        Debug.Log(other.tag);
+        if (other.tag.Contains("Interactable"))
         {
-            visibleItemsList.Add((BaseItem)component);
+            visibleItemsTagsList.Add(other.gameObject);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player") && TryGetComponent(typeof(BaseItem), out Component component))
+        if (other.tag.Contains("Interactable") )
         {
-            visibleItemsList.Remove((BaseItem)component);
+            visibleItemsTagsList.Remove(other.gameObject);
         }
     }
 }

@@ -20,14 +20,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Interaction",
-                    "type": "Button",
-                    "id": "69577b3a-be2e-48f9-92f4-a7c3976ac140",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -85,17 +77,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "d0d64311-e5b8-4b46-8931-f23862748d9a",
-                    "path": "<Keyboard>/space",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interaction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

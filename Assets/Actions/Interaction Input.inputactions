@@ -1,0 +1,33 @@
+{
+    "name": "Interaction Input",
+    "maps": [
+        {
+            "name": "Interaction",
+            "id": "ff652804-f3a6-4a5b-b1d7-f7c1fde77300",
+            "actions": [
+                {
+                    "name": "Interaction",
+                    "type": "Button",
+                    "id": "35a857e6-dd35-4aa5-a046-44bc7e7dc856",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4e9f6509-6208-4dcc-8d74-f98d7c5d59fc",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
