@@ -15,8 +15,7 @@ public class ItemsFinder: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.tag);
-        if (other.tag.Contains("Interactable"))
+        if (other.TryGetComponent(typeof(BaseItem), out Component compose))
         {
             visibleItemsTagsList.Add(other.gameObject);
         }
@@ -24,7 +23,7 @@ public class ItemsFinder: MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag.Contains("Interactable") )
+        if (other.TryGetComponent(typeof(BaseItem), out Component compose))
         {
             visibleItemsTagsList.Remove(other.gameObject);
         }

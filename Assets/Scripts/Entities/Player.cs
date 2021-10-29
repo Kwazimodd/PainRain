@@ -19,4 +19,8 @@ public class Player: BaseEntity
         rigidbody2D.velocity = inputMovement*moveSpeed;
     }
 
+    public void ChangeMoveSpeed(float changer)
+    {
+        moveSpeed *= changer;
+    }
 }
