@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,8 +100,9 @@ MonoBehaviour:
   moveSpeed: 2
   _damage: 5
   _followCooldown: 0
-  _target: {fileID: 0}
-  _spawner: {fileID: 0}
+  _damageCooldown: 0
+  Target: {fileID: 0}
+  Spawner: {fileID: 0}
 --- !u!50 &-3726314392108900838
 Rigidbody2D:
   serializedVersion: 4

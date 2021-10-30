@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7aa47771e749a990fec6f759bcde4f, type: 3}
   m_Name: Swamp1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 7835ba8de6a75b647bdeb783e3d4760e, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
