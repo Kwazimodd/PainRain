@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner: MonoBehaviour
+public class Spawner : MonoBehaviour
 {
+    [Header("Monster Spawn Properties")]
     [SerializeField] private Transform _spawnCenter;
-    [SerializeField] private GameObject[] _spawnObjects;
+    [SerializeField] private GameObject[] _spawnMonsters;
 
     [SerializeField] private float _spawnRadiusStart;
     [SerializeField] private float _spawnRadiusEnd;
@@ -15,25 +17,32 @@ public class Spawner: MonoBehaviour
 
     [SerializeField] private float _spawnCooldown = 1f;
 
+    [Header("Paper Spawn Properties")]
+    [SerializeField] private int _countOfAdditionalPapers;
+    [SerializeField] private Transform _paperSpawnPointsHolder;
+    [SerializeField] private Transform _papersHolder;
+
+    [SerializeField] private GameObject[] _papers;
+    [SerializeField] private List<Transform> _remainedSpawnPoints;
+
     private void Awake()
     {
-
+        _remainedSpawnPoints = new List<Transform>();
     }
 
     private void Start()
     {
-        InvokeRepeating(nameof(Spawn), 0, _spawnCooldown);
+        InvokeRepeating(nameof(SpawnMonsters), 0, _spawnCooldown);
+
+        foreach (var spawnPoint in _paperSpawnPointsHolder) 
+        {
+            _remainedSpawnPoints.Add((Transform)spawnPoint);
+        }
+
+        SpawnPapers();
     }
 
-    private void SpawnAtThePoint(Vector2 spawnPoint, int indexOfObject)
-    {
-        GameObject monster = Instantiate(_spawnObjects[indexOfObject], spawnPoint, Quaternion.identity);
-
-        monster.GetComponent<Monster>().Spawner = this;
-        monster.GetComponent<Monster>().Target = _spawnCenter.gameObject;
-    }
-
-    private void Spawn() 
+    private void SpawnMonsters() 
     {
         if (_currentEntitiesCount >= _maxEntitiesCount) return;
 
@@ -45,8 +54,36 @@ public class Spawner: MonoBehaviour
 
         point = Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)) * direction;
 
-        SpawnAtThePoint(point, 0);
+        GameObject monster = Instantiate(_spawnMonsters[0], point, Quaternion.identity);
+
+        monster.GetComponent<Monster>().Spawner = this;
+        monster.GetComponent<Monster>().Target = _spawnCenter.gameObject;
+
         _currentEntitiesCount++;
+    }
+
+    private void SpawnPapers() 
+    {
+        System.Random random = new System.Random();
+
+        //spawn papers on constant positions
+        for (int i = 0; i < 4; i++)
+        {
+            Vector3 spawnPoint = _remainedSpawnPoints[0].transform.position;
+            Instantiate(_papers[0], spawnPoint, Quaternion.identity, _papersHolder);
+            _remainedSpawnPoints.RemoveAt(0);
+        }
+
+
+        int index = 0;
+        //spawn on remained positions
+        for (int i = 0; i < _countOfAdditionalPapers; i++)  
+        {
+            index = random.Next(0, _remainedSpawnPoints.Count-1);
+            Vector3 spawnPoint = _remainedSpawnPoints[index].transform.position;
+            Instantiate(_papers[0], spawnPoint, Quaternion.identity, _papersHolder);
+            _remainedSpawnPoints.RemoveAt(index);
+        }
     }
 
     void OnDrawGizmosSelected()
