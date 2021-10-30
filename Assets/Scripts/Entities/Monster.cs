@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class Monster: BaseEntity
 {
     [SerializeField] private uint _damage;
-    [SerializeField] private GameObject _target;
     [SerializeField] private float _followCooldown;
     [SerializeReference] private float _damageCooldown;
+
+    public GameObject Target;
+
+    public Spawner Spawner;
+
     private float _lastCollisionTime;
     private float _lastGetDamageTime;
 
@@ -15,9 +23,9 @@ public class Monster: BaseEntity
     {
         try
         {
-            if (_lastCollisionTime >= _followCooldown && _target != null)
+            if (_lastCollisionTime >= _followCooldown && Target != null)
             {
-                Vector2 targetPoint = _target.transform.position;
+                Vector2 targetPoint = Target.transform.position;
                 Vector3 monsterPosition = _rigidbody2D.transform.position;
                 Velocity =
                     new Vector2(targetPoint.x - monsterPosition.x, targetPoint.y - monsterPosition.y).normalized *
@@ -44,14 +52,14 @@ public class Monster: BaseEntity
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.Equals(_target))
+        if (other.gameObject.Equals(Target))
         {
             other.gameObject.GetComponent<BaseEntity>().GetDamage(_damage);
             _rigidbody2D.AddForce(-Velocity.normalized*10, ForceMode2D.Impulse);
             _lastCollisionTime = 0;
         }
 
-        if (_target == null)
+        if (Target == null)
         {
             Velocity = Vector2.zero;
         }
@@ -73,5 +81,11 @@ public class Monster: BaseEntity
         monster.ChangeColour(Color.red);
         yield return new WaitForSeconds(_damageCooldown);
         monster.ChangeColour(Color.white);
+    }
+
+    protected override void Kill()
+    {
+        Spawner.OnMonsterDied();
+        GameObject.Destroy(gameObject);
     }
 }
