@@ -15,6 +15,5 @@ public class Flashlight : MonoBehaviour
         float rotationZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         this.transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
-
     }
 }
