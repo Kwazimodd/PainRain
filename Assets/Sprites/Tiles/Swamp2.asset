@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56deb5b7275f304696177802939089d, type: 3}
   m_Name: Swamp2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3a3de7c51ac5a1b40bdc3eb830ac3a7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -31,6 +31,6 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 0}
+  m_InstancedGameObject: {fileID: 7752055633773740959, guid: 5b723c9b4e22ecf47a264c09dc8e35c9, type: 3}
   m_Flags: 1
   m_ColliderType: 1

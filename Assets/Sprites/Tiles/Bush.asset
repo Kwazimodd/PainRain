@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56deb5b7275f304696177802939089d, type: 3}
   m_Name: Bush
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: dfa6350640b2c6140b47118c47ead979, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -31,6 +31,6 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 0}
+  m_InstancedGameObject: {fileID: 5802751897017344939, guid: 781d4e951dc30144b96b42afe28523af, type: 3}
   m_Flags: 1
   m_ColliderType: 1
