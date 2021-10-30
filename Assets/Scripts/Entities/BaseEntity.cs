@@ -11,6 +11,7 @@ public abstract class BaseEntity : MonoBehaviour
     protected Rigidbody2D _rigidbody2D;
     protected Collider2D _collider2D;
     protected Animator _animator;
+    protected SpriteRenderer _spriteRenderer;
     [SerializeField] protected int health;
     [SerializeField] protected float moveSpeed;
 
@@ -29,6 +30,7 @@ public abstract class BaseEntity : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public virtual void GetDamage(uint damage)
@@ -42,7 +44,7 @@ public abstract class BaseEntity : MonoBehaviour
         GameObject.Destroy(gameObject);
     }
     
-    protected void OnVelocityChange()
+    protected virtual void OnVelocityChange()
     {
         if (Velocity == Vector2.zero)
         {
@@ -70,5 +72,10 @@ public abstract class BaseEntity : MonoBehaviour
                 _animator.SetInteger("move", 0);
             }
         }
+    }
+
+    public void ChangeColour(Color color)
+    {
+        _spriteRenderer.color = color;
     }
 }

@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 public class Monster: BaseEntity
 {
     [SerializeField] private uint _damage;
     [SerializeField] private GameObject _target;
     [SerializeField] private float _followCooldown;
+    [SerializeReference] private float _damageCooldown;
     private float _lastCollisionTime;
+    private float _lastGetDamageTime;
 
     private void MoveToTarget()
     {
@@ -40,6 +38,7 @@ public class Monster: BaseEntity
 
     private void UpdateCooldowns()
     {
+        _lastGetDamageTime += Time.deltaTime;
         _lastCollisionTime += Time.deltaTime;
     }
 
@@ -56,5 +55,23 @@ public class Monster: BaseEntity
         {
             Velocity = Vector2.zero;
         }
+    }
+
+    public override void GetDamage(uint damage)
+    {
+        if (_lastGetDamageTime >= _damageCooldown)
+        {
+            StartCoroutine(FlashLightMonster(this));
+            base.GetDamage(damage);
+            StartCoroutine(FlashLightMonster(this));
+            _lastGetDamageTime = 0;
+        }
+    }
+    
+    private IEnumerator FlashLightMonster(Monster monster)
+    {
+        monster.ChangeColour(Color.red);
+        yield return new WaitForSeconds(_damageCooldown);
+        monster.ChangeColour(Color.white);
     }
 }
