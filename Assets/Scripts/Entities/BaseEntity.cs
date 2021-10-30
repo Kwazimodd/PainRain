@@ -8,9 +8,9 @@ using UnityEngine.EventSystems;
 
 public abstract class BaseEntity : MonoBehaviour
 {
-    protected new Rigidbody2D _rigidbody2D;
-    protected new Collider2D _collider2D;
-    protected new Animator _animator;
+    protected Rigidbody2D _rigidbody2D;
+    protected Collider2D _collider2D;
+    protected Animator _animator;
     [SerializeField] protected int health;
     [SerializeField] protected float moveSpeed;
 
@@ -37,12 +37,12 @@ public abstract class BaseEntity : MonoBehaviour
         if (health <= 0) Kill();
     }
 
-    public virtual void Kill()
+    protected virtual void Kill()
     {
-        Destroy(gameObject);
+        GameObject.Destroy(gameObject);
     }
     
-    protected virtual void OnVelocityChange()
+    protected void OnVelocityChange()
     {
         if (Velocity == Vector2.zero)
         {
@@ -52,19 +52,20 @@ public abstract class BaseEntity : MonoBehaviour
         {
             _animator.SetBool("Idle", false);
             
-            if (Velocity.x > 0)
+            if ((int)Velocity.x > 0)
             {
                 _animator.SetInteger("move", 1);
             }
-            else if (Velocity.x < 0)
+            else if ((int)Velocity.x < 0)
             {
                 _animator.SetInteger("move", 3);
             }
-            else if (Velocity.y > 0)
+            else if ((int)Velocity.y > 0)
             {
+                
                 _animator.SetInteger("move", 2);
             }
-            else if (Velocity.y < 0)
+            else if ((int)Velocity.y < 0)
             {
                 _animator.SetInteger("move", 0);
             }
