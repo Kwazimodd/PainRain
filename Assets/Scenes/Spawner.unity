@@ -169,8 +169,8 @@ MonoBehaviour:
   _spawnCenter: {fileID: 1253474843}
   _spawnObjects:
   - {fileID: 811384273159741840, guid: 289fef0483b937942868b6921da7837a, type: 3}
-  _spawnRadiusStart: 5.04
-  _spawnRadiusEnd: 20.46
+  _spawnRadiusStart: 5
+  _spawnRadiusEnd: 20
   _maxEntitiesCount: 10
   _currentEntitiesCount: 0
   _spawnCooldown: 1
@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 1253474846}
   - component: {fileID: 1253474845}
   - component: {fileID: 1253474847}
+  - component: {fileID: 1253474848}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -380,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 0a9acedcadb75814ebae8b39ac369984, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: dd4409d5ea0056b43b13e4b4a0fb7633, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -407,7 +408,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1253474841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8688360ff57d435183775e32a1c251ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cf97313b55149a697a7d82cacc9eac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
@@ -433,6 +434,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &1253474848
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253474841}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1380781058
 GameObject:
   m_ObjectHideFlags: 0

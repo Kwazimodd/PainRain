@@ -27,7 +27,10 @@ public class Spawner: MonoBehaviour
 
     private void SpawnAtThePoint(Vector2 spawnPoint, int indexOfObject)
     {
-        Instantiate(_spawnObjects[indexOfObject], spawnPoint, Quaternion.identity);
+        GameObject monster = Instantiate(_spawnObjects[indexOfObject], spawnPoint, Quaternion.identity);
+
+        monster.GetComponent<Monster>().Spawner = this;
+        monster.GetComponent<Monster>().Target = _spawnCenter.gameObject;
     }
 
     private void Spawn() 
@@ -56,4 +59,10 @@ public class Spawner: MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_spawnCenter.position, _spawnRadiusEnd);
     }
+
+    public void OnMonsterDied() 
+    {
+        _currentEntitiesCount--;
+    }
+
 }
