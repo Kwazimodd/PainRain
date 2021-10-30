@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8688360ff57d435183775e32a1c251ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 10
   moveSpeed: 10
 --- !u!50 &236544299
 Rigidbody2D:
@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 284171990}
   - component: {fileID: 284171989}
   - component: {fileID: 284171993}
+  - component: {fileID: 284171994}
   m_Layer: 0
   m_Name: PumpkinDown_0
   m_TagString: Untagged
@@ -434,8 +435,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   moveSpeed: 5
-  _damage: 0
-  Player: {fileID: 236544296}
+  _damage: 1
+  _target: {fileID: 236544296}
+  _followCooldown: 1
 --- !u!212 &284171991
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -522,6 +524,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &284171994
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284171988}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.07, y: -0.87}
+  serializedVersion: 2
+  m_Radius: 0.5555229
 --- !u!1 &503729220
 GameObject:
   m_ObjectHideFlags: 0
