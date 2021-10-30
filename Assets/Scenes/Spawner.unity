@@ -166,9 +166,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0f65dd7f8a45429f5ac5fff6b27f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnCenter: {fileID: 1253474841}
-  _spawnObjects: []
-  _spawnCooldown: 0
+  _spawnCenter: {fileID: 1253474843}
+  _spawnObjects:
+  - {fileID: 811384273159741840, guid: 289fef0483b937942868b6921da7837a, type: 3}
+  _spawnRadiusStart: 5.04
+  _spawnRadiusEnd: 20.46
+  _maxEntitiesCount: 10
+  _currentEntitiesCount: 0
+  _spawnCooldown: 1
 --- !u!1 &951990712
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253474841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.900483, y: 0.046260696, z: 0}
+  m_LocalPosition: {x: 3.426, y: -0.164, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 951990713}
