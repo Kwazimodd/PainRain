@@ -1,0 +1,33 @@
+{
+    "name": "Mose Input",
+    "maps": [
+        {
+            "name": "Mose Options",
+            "id": "f3f52001-9fbf-4225-a5aa-0f883edf5322",
+            "actions": [
+                {
+                    "name": "Mouse Position",
+                    "type": "Value",
+                    "id": "af2a56e4-2f51-4781-adee-812c71067f8d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e5b4aa31-890f-4614-8dde-a8355081960d",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouse Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

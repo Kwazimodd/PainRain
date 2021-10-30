@@ -57,3 +57,7 @@ crashlytics-build.properties
 
 EditorUserSettings.asset
 
+UserSettings/EditorUserSettings.asset
+.vsconfig
+
+/.idea
