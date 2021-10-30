@@ -8,7 +8,7 @@ public class LayerSorter : MonoBehaviour
     private List<Obstacle> obstacles= new List<Obstacle>();
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag=="Obstacle")
+        if(collision.CompareTag("Obstacle"))
         {
             Obstacle o = collision.GetComponent<Obstacle>();
             if (obstacles.Count == 0|| o.MySpriteRenderer.sortingOrder-1< transform.parent.GetComponent<SpriteRenderer>().sortingOrder)
@@ -26,13 +26,13 @@ public class LayerSorter : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Obstacle")
+        if (collision.CompareTag("Obstacle"))
         {
             Obstacle o = collision.GetComponent<Obstacle>();
 
             obstacles.Remove(o);
             if (obstacles.Count == 0)
-            {
+            { 
                 transform.parent.GetComponent<SpriteRenderer>().sortingOrder = 200;
             }
             else

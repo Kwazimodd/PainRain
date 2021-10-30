@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8407606910754143491}
   m_Layer: 0
   m_Name: tree4
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7792883722975351045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52fe6d6c49f768844af52d02f8aadb96, type: 3}
+  m_Script: {fileID: 11500000, guid: 758acb97419f4ee88c6129d70d54f742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!58 &3362647631529226555

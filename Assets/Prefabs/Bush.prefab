@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5669006064038793661}
   m_Layer: 0
   m_Name: Bush
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,6 +136,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5802751897017344939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52fe6d6c49f768844af52d02f8aadb96, type: 3}
+  m_Script: {fileID: 11500000, guid: 758acb97419f4ee88c6129d70d54f742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
