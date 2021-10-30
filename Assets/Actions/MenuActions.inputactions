@@ -1,0 +1,44 @@
+{
+    "name": "MenuActions",
+    "maps": [
+        {
+            "name": "Menu",
+            "id": "b0fd2e7d-d2b7-4e9a-aa59-da84b204cd93",
+            "actions": [
+                {
+                    "name": "MenuSwitch",
+                    "type": "Button",
+                    "id": "45f02dff-ce8b-4c2f-97b2-4a9f3db75f4f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5a1de5db-83a5-4ec1-8e32-a51a284ea735",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2c5a910-056c-49ae-98c0-84f078f4fb9e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
