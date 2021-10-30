@@ -9,14 +9,37 @@ using UnityEngine.InputSystem;
 
 public class Player: BaseEntity
 {
-    private void OnMove(InputValue value)
+    private bool _isOnPuddle = false;
+    public void OnMove(InputValue value)
     {
         Vector2 inputMovement = value.Get<Vector2>();
-        Velocity = inputMovement*moveSpeed;
+        Move(inputMovement*moveSpeed);
     }
 
-    public void ChangeMoveSpeed(float changer)
+    private void Move(Vector2 velocityVector)
     {
-        moveSpeed *= changer;
+        Velocity = velocityVector;
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.TryGetComponent(typeof(Puddle), out Component component) && !_isOnPuddle)
+        {
+            moveSpeed /= 2;
+            _isOnPuddle = true;
+            Move(Velocity.normalized*moveSpeed);
+        }
+        
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.TryGetComponent(typeof(Puddle), out Component component) && _isOnPuddle)
+        {
+            moveSpeed *= 2;
+            _isOnPuddle = false;
+            Move(Velocity.normalized*moveSpeed);
+        }
+        
     }
 }

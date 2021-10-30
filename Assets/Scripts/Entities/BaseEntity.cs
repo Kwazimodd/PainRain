@@ -18,13 +18,13 @@ public abstract class BaseEntity : MonoBehaviour
     public Vector2 Velocity
     {
         get { return _rigidbody2D.velocity; }
-        protected set
+        set
         {
             _rigidbody2D.velocity = value;
             OnVelocityChange();
         }
     }
-
+    
     protected virtual void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
