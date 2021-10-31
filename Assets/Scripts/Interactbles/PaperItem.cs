@@ -7,6 +7,7 @@ public class PaperItem: BaseItem
 {
     public override void Interaction()
     {
-        Debug.Log("Paper");
+        MenuScript.Instance.GetComponent<PaperContentGenerator>().PickUpUser();
+        GameObject.Destroy(this.gameObject);
     }
 }
