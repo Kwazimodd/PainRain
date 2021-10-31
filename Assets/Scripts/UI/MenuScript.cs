@@ -27,7 +27,7 @@ public class MenuScript : MonoBehaviour
     [SerializeField]
     private CanvasGroup[] menus;
 
-    private List<Tuple<String, String>> _paperTextList;
+    public List<Tuple<String, String>> paperTextList;
     private int currentPaperIndex = -1;
 
     [SerializeField] private Text mainContent, keyContent;
@@ -36,20 +36,20 @@ public class MenuScript : MonoBehaviour
 
     private void Awake()
     {
-        _paperTextList = new List<Tuple<String, String>>();
+        paperTextList = new List<Tuple<String, String>>();
     }
 
     public void OnMenuSwitch()
     {
         if (Keyboard.current.tabKey.isPressed)
         {
-            if (_paperTextList.Count > 0)
+            if (paperTextList.Count > 0)
             {
                 Open(0);
                 currentPaperIndex = 0;
-                mainContent.text = _paperTextList[currentPaperIndex].Item1;
-                keyContent.text = _paperTextList[currentPaperIndex].Item2;
-                if (_paperTextList.Count == 1)
+                mainContent.text = paperTextList[currentPaperIndex].Item1;
+                keyContent.text = paperTextList[currentPaperIndex].Item2;
+                if (paperTextList.Count == 1)
                 {
                     switchLeft.enabled = false;
                     switchRight.enabled = false;
@@ -109,19 +109,19 @@ public class MenuScript : MonoBehaviour
 
     public void PickUpAndAddPaper(Tuple<String, String> content)
     {
-        _paperTextList.Add(content);
-        Debug.Log(_paperTextList.Count);
+        paperTextList.Add(content);
+        Debug.Log(paperTextList.Count);
     }
 
     public void SwitchPaperRight()
     {
-        if (++currentPaperIndex == _paperTextList.Count-1)
+        if (++currentPaperIndex == paperTextList.Count-1)
         {
             switchRight.enabled = false;
         }
 
-        mainContent.text = _paperTextList[currentPaperIndex].Item1;
-        keyContent.text = _paperTextList[currentPaperIndex].Item2;
+        mainContent.text = paperTextList[currentPaperIndex].Item1;
+        keyContent.text = paperTextList[currentPaperIndex].Item2;
         
         switchLeft.enabled = true;
     }
@@ -133,9 +133,23 @@ public class MenuScript : MonoBehaviour
             switchLeft.enabled = false;
         }
         
-        mainContent.text = _paperTextList[currentPaperIndex].Item1;
-        keyContent.text = _paperTextList[currentPaperIndex].Item2;
+        mainContent.text = paperTextList[currentPaperIndex].Item1;
+        keyContent.text = paperTextList[currentPaperIndex].Item2;
         
         switchRight.enabled = true;
+    }
+
+    public void OpenDialogue()
+    {
+        Open(2);
+    }
+
+    public void DialogueNextButton()
+    {
+        if (GetComponent<PaperContentGenerator>().RandomString ==
+            GetComponent<DialogueContentGenerator>().input.GetComponentInChildren<Text>().text)
+        {
+            SceneManager.LoadScene("EndGame", LoadSceneMode.Single); 
+        }
     }
 }

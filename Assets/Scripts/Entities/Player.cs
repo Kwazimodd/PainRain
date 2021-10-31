@@ -6,6 +6,7 @@ using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player: BaseEntity
 {
@@ -41,5 +42,11 @@ public class Player: BaseEntity
             Move(Velocity.normalized*moveSpeed);
         }
         
+    }
+
+    protected override void Kill()
+    {
+        base.Kill();
+        SceneManager.LoadScene("GameMap", LoadSceneMode.Single);
     }
 }
