@@ -156,8 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   moveSpeed: 6
-  _damage: 0
-  _followCooldown: 1
-  _damageCooldown: 1
+  _damage: 2
+  _followCooldown: 0.5
+  _damageCooldown: 0.75
   Target: {fileID: 0}
   Spawner: {fileID: 0}

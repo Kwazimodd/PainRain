@@ -64,6 +64,8 @@ public class Monster: BaseEntity
             Velocity = Vector2.zero;
         }
     }
+    
+    
 
     public override void GetDamage(uint damage)
     {
@@ -71,15 +73,17 @@ public class Monster: BaseEntity
         {
             StartCoroutine(FlashLightMonster(this));
             base.GetDamage(damage);
-            StartCoroutine(FlashLightMonster(this));
             _lastGetDamageTime = 0;
         }
     }
     
     private IEnumerator FlashLightMonster(Monster monster)
     {
+        
+        monster.ChangeColour(Color.white);
+        yield return new WaitForSeconds(_damageCooldown/2);
         monster.ChangeColour(Color.red);
-        yield return new WaitForSeconds(_damageCooldown);
+        yield return new WaitForSeconds(_damageCooldown/2);
         monster.ChangeColour(Color.white);
     }
 
