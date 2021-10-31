@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4893487509552004251}
   - component: {fileID: 4893487509552004248}
+  - component: {fileID: 8866738318311846615}
+  - component: {fileID: -8089565212960325360}
   m_Layer: 0
   m_Name: _tempPaper
   m_TagString: Untagged
@@ -70,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 200
   m_Sprite: {fileID: 21300000, guid: 3280dcf2d52bf8043b9690255441c539, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -82,3 +84,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &8866738318311846615
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893487509552004249}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.0739335}
+  serializedVersion: 2
+  m_Radius: 0.5739335
+--- !u!114 &-8089565212960325360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893487509552004249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6586397a70f4fe281f1371b4475758f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

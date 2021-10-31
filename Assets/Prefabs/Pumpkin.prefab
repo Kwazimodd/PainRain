@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3312987707145710108}
   - component: {fileID: 3286208107729498370}
   - component: {fileID: 1907460370804852544}
+  - component: {fileID: 9014708629432753788}
   m_Layer: 0
   m_Name: Pumpkin
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2238114184086329731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -141,3 +142,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &9014708629432753788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238114184086329731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 767185f279d442e7a5d7d499fd053873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  moveSpeed: 4.1
+  _damage: 0
+  _followCooldown: 1
+  _damageCooldown: 1
+  Target: {fileID: 0}
+  Spawner: {fileID: 0}
