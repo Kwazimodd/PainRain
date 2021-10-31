@@ -96,10 +96,12 @@ public class MenuScript : MonoBehaviour
 
     public void goStartGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("GameMap", LoadSceneMode.Single);
     }
     public void goMainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
     public void goExit()
@@ -110,7 +112,6 @@ public class MenuScript : MonoBehaviour
     public void PickUpAndAddPaper(Tuple<String, String> content)
     {
         paperTextList.Add(content);
-        Debug.Log(paperTextList.Count);
     }
 
     public void SwitchPaperRight()
@@ -147,8 +148,9 @@ public class MenuScript : MonoBehaviour
     public void DialogueNextButton()
     {
         if (GetComponent<PaperContentGenerator>().RandomString ==
-            GetComponent<DialogueContentGenerator>().input.GetComponentInChildren<Text>().text)
+            GetComponent<DialogueContentGenerator>().input.GetComponentInChildren<InputField>().text)
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("EndGame", LoadSceneMode.Single); 
         }
     }
