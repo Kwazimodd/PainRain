@@ -15,7 +15,6 @@ public class PaperContentGenerator : MonoBehaviour
     private void Awake()
     {
         _randomString = RandomStrManager.GetRandomString(_content.Content.Count);
-        Debug.Log(_randomString);
         _randomStringCopy = _randomString;
         _contentList = new List<string>(_content.Content);
     }

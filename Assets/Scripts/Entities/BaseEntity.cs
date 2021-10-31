@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.EventSystems;
+
 
 public abstract class BaseEntity : MonoBehaviour
 {

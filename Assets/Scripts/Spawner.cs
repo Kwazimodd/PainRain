@@ -54,7 +54,7 @@ public class Spawner : MonoBehaviour
 
         point = Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)) * direction;
 
-        GameObject monster = Instantiate(_spawnMonsters[UnityEngine.Random.Range(0, 3)], point, Quaternion.identity);
+        GameObject monster = Instantiate(_spawnMonsters[UnityEngine.Random.Range(0, _spawnMonsters.Length-1)], point, Quaternion.identity);
 
         monster.GetComponent<Monster>().Spawner = this;
         monster.GetComponent<Monster>().Target = _spawnCenter.gameObject;
