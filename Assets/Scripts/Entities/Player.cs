@@ -10,6 +10,15 @@ using UnityEngine.InputSystem;
 public class Player: BaseEntity
 {
     private bool _isOnPuddle = false;
+    
+    public int Health
+    {
+        get 
+        {
+            return health;
+        }
+    }
+
     public void OnMove(InputValue value)
     {
         Vector2 inputMovement = value.Get<Vector2>();
