@@ -31,15 +31,16 @@ public class Player: BaseEntity
         Velocity = velocityVector;
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+
+
+    public void GetSlowDowned() 
     {
-        if (other.gameObject.TryGetComponent(typeof(Puddle), out Component component) && !_isOnPuddle)
+        if (!_isOnPuddle) 
         {
             moveSpeed /= 2;
             _isOnPuddle = true;
-            Move(Velocity.normalized*moveSpeed);
+            Move(Velocity.normalized * moveSpeed);
         }
-        
     }
     
     private void OnTriggerExit2D(Collider2D other)

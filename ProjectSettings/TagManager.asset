@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - Obstacle
+  - Flashlight
   layers:
   - Default
   - TransparentFX

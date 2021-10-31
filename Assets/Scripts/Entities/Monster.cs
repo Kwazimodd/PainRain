@@ -54,7 +54,7 @@ public class Monster: BaseEntity
     {
         if (other.gameObject.Equals(Target))
         {
-            other.gameObject.GetComponent<BaseEntity>().GetDamage(_damage);
+            other.gameObject.GetComponentInParent<BaseEntity>().GetDamage(_damage);
             _rigidbody2D.AddForce(-Velocity.normalized*10, ForceMode2D.Impulse);
             _lastCollisionTime = 0;
         }
