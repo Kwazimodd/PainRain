@@ -18,6 +18,8 @@ public class HealthRepresenter : MonoBehaviour
 
         if (_player == null)
             throw new System.Exception("Player is not set");
+
+        _maxHealth = _player.Health;
     }
 
     void Update()
