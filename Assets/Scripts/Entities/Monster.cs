@@ -86,6 +86,21 @@ public class Monster: BaseEntity
     protected override void Kill()
     {
         Spawner.OnMonsterDied();
+        switch (gameObject.name)
+        {
+            case "Ghost(Clone)":
+                SoundManager.Instance.MakeSound(2);
+                break;
+            case "Ghastly(Clone)":
+                SoundManager.Instance.MakeSound(3);
+                break;
+            case "Pumpkin(Clone)":
+                SoundManager.Instance.MakeSound(0);
+                break;
+            case "Pumpkin2(Clone)":
+                SoundManager.Instance.MakeSound(1);
+                break;
+        }
         GameObject.Destroy(gameObject);
     }
 }
