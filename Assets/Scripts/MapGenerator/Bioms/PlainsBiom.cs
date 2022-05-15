@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
-
 public class PlainsBiom : IBiom
 {
     public string Name { get; set; }

@@ -13,9 +13,9 @@ public class PlayerAffecter : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.TryGetComponent(typeof(Puddle), out Component component))
+        if (other.gameObject.TryGetComponent<Puddle>(out Puddle puddle))
         {
-            _player.GetSlowDowned();
+            _player.GetSlowDowned(puddle.SpeedModifier);
         }
     }
 }
