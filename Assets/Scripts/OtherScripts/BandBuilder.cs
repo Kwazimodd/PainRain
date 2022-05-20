@@ -3,9 +3,6 @@ using UnityEngine;
 public class BandBuilder : MonoBehaviour, IBuilder
 {
     Band band = new Band();
-    
-    [SerializeField]
-    List<GameObject> monsters = new List<GameObject>();
 
 
     public void Reset()
@@ -15,22 +12,22 @@ public class BandBuilder : MonoBehaviour, IBuilder
 
     public void BuildPartA()
     {
-        band.Add(monsters[0]);
+        band.Add(GameFacade.Instance.MonsterList[0]);
     }
 
     public void BuildPartB()
     {
-        band.Add(monsters[1]);
+        band.Add(GameFacade.Instance.MonsterList[1]);
     }
 
     public void BuildPartC()
     {
-        band.Add(monsters[2]);
+        band.Add(GameFacade.Instance.MonsterList[2]);
     }
 
     public void BuildPartD()
     {
-        band.Add(monsters[3]);
+        band.Add(GameFacade.Instance.MonsterList[3]);
     }
 
     public Band GetBand()
