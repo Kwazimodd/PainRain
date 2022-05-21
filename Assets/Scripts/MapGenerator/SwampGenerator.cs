@@ -18,16 +18,15 @@ public class SwampGenerator : MonoBehaviour, IGenerator
     [SerializeField] private Tilemap topTilemap;
     [SerializeField] private Tilemap botTilemap;
 
-    public IBiom GenerateBiom()
+    private int rows;
+    private int parts;
+    private int offset;
+
+    public void GenerateGrass()
     {
-        SwampBiom swampBiom = new SwampBiom() { Name = "Swamp" };
-        swampBiom.Render();
-
-        var rows = Random.Range(minRows, maxRows);
-        var parts = Random.Range(minParts, maxParts);
-        var offset = Random.Range(0, minParts);
-
-        Vector2 center = new Vector2(0, rows / 2);
+        rows = Random.Range(minRows, maxRows);
+        parts = Random.Range(minParts, maxParts);
+        offset = Random.Range(0, minParts);
 
         for (int i = 0; i < rows; i++)
         {
@@ -46,10 +45,13 @@ public class SwampGenerator : MonoBehaviour, IGenerator
                 offset = Random.Range(offset - 5, offset);
             }
         }
+    }
 
+    public void GenerateStuff()
+    {
         for (int i = padding; i < rows; i++)
         {
-            for (int j = -padding; j < parts-padding; j++)
+            for (int j = -padding; j < parts - padding; j++)
             {
                 if (Random.Range(0, 100) < treeChance)
                 {
@@ -58,6 +60,12 @@ public class SwampGenerator : MonoBehaviour, IGenerator
                 }
             }
         }
+    }
+
+    public IBiom GetBiom()
+    {
+        SwampBiom swampBiom = new SwampBiom() { Name = "Swamp" };
+        swampBiom.Render();
 
         return swampBiom;
     }
