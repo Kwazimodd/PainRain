@@ -11,7 +11,7 @@ public interface IComponent
 
 public class Composite : IComponent
 {
-    private List<Band> bands = new List<Band>();
+    private List<IComponent> bands = new List<IComponent>();
 
     public void Add(Band band)
     {
@@ -23,25 +23,9 @@ public class Composite : IComponent
         bands.Remove(band);
     }
 
-    public List<Band> GetBands()
-    {
-        return bands;
-    }
-
     public void Create()
     {
-        foreach (var item in bands)
-        {
-            //create assotiation
-        }
-    }
-}
-
-public class Leaf : IComponent
-{
-    public void Create()
-    {
-        //create band
+        //use SpawnAssotiation
     }
 }
 
