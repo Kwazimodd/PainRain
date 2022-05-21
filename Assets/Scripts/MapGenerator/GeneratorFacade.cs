@@ -10,27 +10,57 @@ public class GeneratorFacade : MonoBehaviour
     [SerializeField] private Tilemap topTilemap;
     [SerializeField] private Tilemap botTilemap;
 
-    [SerializeField] private Dropdown dropdown;
+    [SerializeField] private Dropdown modeDropdown;
+    [SerializeField] private Dropdown biomsDropdown;
 
-    private void Start()
+    private void Awake()
     {
         generators.Add(GetComponent<PlainsGenerator>());
         generators.Add(GetComponent<ForestGenerator>());
         generators.Add(GetComponent<SwampGenerator>());
     }
 
-    public void StartGenerate()
+    public void SetEnableDropdown()
     {
-        Generate(generators[dropdown.value]);
+        biomsDropdown.enabled = modeDropdown.value == 0;
     }
 
-    public void Generate(IGenerator generator)
+    public void Generate()
     {
-        topTilemap.ClearAllTiles();
-        botTilemap.ClearAllTiles();
+        if (modeDropdown.value == 0)
+        {
+            GenerateOne();
+        }
+        else
+        {
+            GenerateAll();
+        }
+    }
 
-        var biom = generator.GenerateBiom();
+    public void GenerateOne()
+    {
+        Generate(generators[biomsDropdown.value], true);
+    }
+
+    public void GenerateAll()
+    {
+        for (int i = 0; i < generators.Count; i++)
+        {
+            Generate(generators[i], false);
+        }
+    }
+
+    public void Generate(IGenerator generator, bool clearTiles)
+    {
+        if (clearTiles)
+        {
+            topTilemap.ClearAllTiles();
+            botTilemap.ClearAllTiles();
+        }
+
+        generator.GenerateGrass();
+        generator.GenerateStuff();
+        var biom = generator.GetBiom();
         Debug.Log($"{biom.Name} was generated");
-        
     }
 }

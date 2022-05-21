@@ -18,11 +18,8 @@ public class PlainsGenerator : MonoBehaviour, IGenerator
     [SerializeField] private Tilemap topTilemap;
     [SerializeField] private Tilemap botTilemap;
 
-    public IBiom GenerateBiom()
+    public void GenerateGrass()
     {
-        PlainsBiom plainsBiom = new PlainsBiom() { Name = "Plains" };
-        plainsBiom.Render();
-
         for (int i = 0; i < height; i++)
         {
             for (int j = 0; j < width; j++)
@@ -30,7 +27,10 @@ public class PlainsGenerator : MonoBehaviour, IGenerator
                 botTilemap.SetTile(new Vector3Int(j, i, 0), tile);
             }
         }
+    }
 
+    public void GenerateStuff()
+    {
         for (int i = borderY; i < height - borderY; i++)
         {
             for (int j = borderX; j < width - borderX; j++)
@@ -41,6 +41,12 @@ public class PlainsGenerator : MonoBehaviour, IGenerator
                 }
             }
         }
+    }
+
+    public IBiom GetBiom()
+    {
+        PlainsBiom plainsBiom = new PlainsBiom() { Name = "Plains" };
+        plainsBiom.Render();
 
         return plainsBiom;
     }
