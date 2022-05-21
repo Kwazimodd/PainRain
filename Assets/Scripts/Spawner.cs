@@ -61,6 +61,46 @@ public class Spawner : MonoBehaviour
         _currentEntitiesCount++;
     }
 
+    private void SpawnBand(Band band)
+    {
+        if (_currentEntitiesCount >= _maxEntitiesCount) return;
+
+        float x = UnityEngine.Random.Range(_spawnRadiusStart, _spawnRadiusEnd);
+        float y = UnityEngine.Random.Range(_spawnRadiusStart, _spawnRadiusEnd);
+
+        int i = 0, j = 0;
+
+        foreach (var item in band.GetBand())
+        {
+            Vector3 point = new Vector3(x + i, y + j);
+            Vector3 direction = point - _spawnCenter.position;
+
+            GameObject monster = Instantiate(item, point, Quaternion.identity);
+
+            monster.GetComponent<Monster>().Spawner = this;
+            monster.GetComponent<Monster>().Target = _spawnCenter.gameObject;
+
+            _currentEntitiesCount++;
+
+            if (i % 2 == 0)
+            {
+                i++;
+            }
+            else
+            {
+                j++;
+            }
+        }
+    }
+
+    private void SpawnAssotiation(List<Band> bands)
+    {
+        foreach (var item in bands)
+        {
+            SpawnBand(item);
+        }
+    }
+
     private void SpawnPapers() 
     {
         System.Random random = new System.Random();
