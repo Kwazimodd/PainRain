@@ -13,14 +13,14 @@ public class Composite : IComponent
 {
     private List<IComponent> bands = new List<IComponent>();
 
-    public void Add(Band band)
+    public void Add(IComponent component)
     {
-        bands.Add(band);
+        bands.Add(component);
     }
 
-    public void Remove(Band band)
+    public void Remove(IComponent component)
     {
-        bands.Remove(band);
+        bands.Remove(component);
     }
 
     public void Create()
