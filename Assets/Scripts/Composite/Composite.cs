@@ -25,7 +25,10 @@ public class Composite : IComponent
 
     public void Create()
     {
-        //use SpawnAssotiation
+        foreach (var item in bands)
+        {
+            item.Create();
+        }
     }
 }
 

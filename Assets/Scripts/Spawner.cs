@@ -93,14 +93,6 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void SpawnAssotiation(List<Band> bands)
-    {
-        foreach (var item in bands)
-        {
-            SpawnBand(item);
-        }
-    }
-
     private void SpawnPapers() 
     {
         System.Random random = new System.Random();
