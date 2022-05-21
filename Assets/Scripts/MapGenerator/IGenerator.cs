@@ -1,5 +1,7 @@
 public interface IGenerator
 {
-    IBiom GenerateBiom();
+    public IBiom GetBiom();
+    public void GenerateGrass();
+    public void GenerateStuff();
 }
 
