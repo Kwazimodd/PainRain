@@ -33,7 +33,7 @@ public class SwampGenerator : MonoBehaviour, IGenerator
 
             for (int j = -offset; j < parts + offset; j++)
             {
-                botTilemap.SetTile(new Vector3Int(j, i, 0), tile);
+                BotTilemap.SetTile(new Vector3Int(j, i, 0), tile);
             }
 
             if (i <= rows / 2)
@@ -56,7 +56,7 @@ public class SwampGenerator : MonoBehaviour, IGenerator
                 if (Random.Range(0, 100) < treeChance)
                 {
                     var index = Random.Range(0, swampStuff.Length - 1);
-                    topTilemap.SetTile(new Vector3Int(j, i, 0), swampStuff[index]);
+                    TopTilemap.SetTile(new Vector3Int(j, i, 0), swampStuff[index]);
                 }
             }
         }

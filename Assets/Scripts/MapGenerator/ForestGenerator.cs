@@ -30,7 +30,7 @@ public class ForestGenerator : MonoBehaviour, IGenerator
             {
                 if (Vector2.Distance(new Vector2(j, i), center) < radius - 0.5f)
                 {
-                    botTilemap.SetTile(new Vector3Int(j, i, 0), tile);
+                    BotTilemap.SetTile(new Vector3Int(j, i, 0), tile);
                 }
             }
         }
@@ -47,7 +47,7 @@ public class ForestGenerator : MonoBehaviour, IGenerator
                     if (Random.Range(0, 100) < spawnTreeChance)
                     {
                         var treeIndex = Random.Range(0, treeTiles.Length - 1);
-                        topTilemap.SetTile(new Vector3Int(j, i, 0), treeTiles[treeIndex]);
+                        TopTilemap.SetTile(new Vector3Int(j, i, 0), treeTiles[treeIndex]);
                     }
                 }
             }
