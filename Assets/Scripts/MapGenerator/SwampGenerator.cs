@@ -15,8 +15,8 @@ public class SwampGenerator : MonoBehaviour, IGenerator
     [SerializeField] private int treeChance;
     [SerializeField] private int padding;
 
-    [SerializeField] private Tilemap topTilemap;
-    [SerializeField] private Tilemap botTilemap;
+    public Tilemap TopTilemap { get; set; }
+    public Tilemap BotTilemap { get; set; }
 
     private int rows;
     private int parts;
