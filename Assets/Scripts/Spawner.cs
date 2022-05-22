@@ -5,6 +5,20 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    private static Spawner instance;
+
+    public static Spawner Instance 
+    { 
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<Spawner>();
+            }
+            return instance;
+        }
+    }
+
     [Header("Monster Spawn Properties")]
     [SerializeField] private Transform _spawnCenter;
 
@@ -24,6 +38,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject[] _papers;
     [SerializeField] private List<Transform> _remainedSpawnPoints;
 
+    
+
     private void Awake()
     {
         _remainedSpawnPoints = new List<Transform>();
@@ -31,7 +47,7 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnMonsters), 0, _spawnCooldown);
+        //InvokeRepeating(nameof(SpawnMonsters), 0, _spawnCooldown);
 
         foreach (var spawnPoint in _paperSpawnPointsHolder) 
         {
@@ -61,7 +77,7 @@ public class Spawner : MonoBehaviour
         _currentEntitiesCount++;
     }
 
-    private void SpawnBand(Band band)
+    public void SpawnBand(Band band)
     {
         if (_currentEntitiesCount >= _maxEntitiesCount) return;
 

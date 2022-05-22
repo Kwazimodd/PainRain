@@ -33,19 +33,19 @@
 
     public void BuildRandomBand()
     {
-        if (UnityEngine.Random.Range(0,1)==1)
+        if (UnityEngine.Random.Range(0, 2) == 1)
         {
             builder.BuildPartA();
         }
-        if (UnityEngine.Random.Range(0, 1) == 1)
+        if (UnityEngine.Random.Range(0, 2) == 1)
         {
             builder.BuildPartB();
         }
-        if (UnityEngine.Random.Range(0, 1) == 1)
+        if (UnityEngine.Random.Range(0, 2) == 1)
         {
             builder.BuildPartC();
         }
-        if (UnityEngine.Random.Range(0, 1) == 1)
+        if (UnityEngine.Random.Range(0, 2) == 1)
         {
             builder.BuildPartD();
         }
