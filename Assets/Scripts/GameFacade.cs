@@ -24,5 +24,8 @@ public class GameFacade : MonoBehaviour
 
     public List<GameObject> MonsterList { get => monsterList; }
 
-    //add new possible items
+    private void Start()
+    {
+        
+    }
 }
