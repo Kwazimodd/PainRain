@@ -17,9 +17,20 @@ public class PaperContentGenerator : MonoBehaviour
     private void Awake()
     {
         if (_paperContentScriptableObject == null)
-            _content = new PaperContentProxy(new PaperContent());
+        {
+            if (PaperContentFileSaver.IsFileExists)
+            {
+                _content = new PaperContentFromFile();
+            }
+            else
+            {
+                _content = new PaperContentFileSaver(new PaperContentProxy(new PaperContent()));
+            }
+        }
         else
+        {
             _content = _paperContentScriptableObject;
+        }
 
         _randomString = RandomStrManager.GetRandomString(_content.GetContent().Count);
         _randomStringCopy = _randomString;
