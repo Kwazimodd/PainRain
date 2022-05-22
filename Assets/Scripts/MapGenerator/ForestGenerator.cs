@@ -9,9 +9,8 @@ public class ForestGenerator : MonoBehaviour, IGenerator
     [SerializeField] private int radius;
     [SerializeField] private float padding;
     [SerializeField] private int spawnTreeChance;
-
-    [SerializeField] private Tilemap topTilemap;
-    [SerializeField] private Tilemap botTilemap;
+    public Tilemap TopTilemap { get; set; }
+    public Tilemap BotTilemap { get; set; }
     private Vector2 center => new Vector2(radius - 0.5f, radius - 0.5f);
 
     public IBiom GetBiom()
