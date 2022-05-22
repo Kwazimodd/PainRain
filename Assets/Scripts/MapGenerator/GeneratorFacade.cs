@@ -18,6 +18,12 @@ public class GeneratorFacade : MonoBehaviour
         generators.Add(GetComponent<PlainsGenerator>());
         generators.Add(GetComponent<ForestGenerator>());
         generators.Add(GetComponent<SwampGenerator>());
+
+        foreach (var generator in generators)
+        {
+            generator.TopTilemap = topTilemap;
+            generator.BotTilemap = botTilemap;
+        }
     }
 
     public void SetEnableDropdown()

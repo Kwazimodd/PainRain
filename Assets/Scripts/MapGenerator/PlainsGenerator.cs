@@ -15,8 +15,8 @@ public class PlainsGenerator : MonoBehaviour, IGenerator
     [SerializeField] private int borderX;
     [SerializeField] private int borderY;
 
-    [SerializeField] private Tilemap topTilemap;
-    [SerializeField] private Tilemap botTilemap;
+    public Tilemap TopTilemap { get; set; }
+    public Tilemap BotTilemap { get; set; }
 
     public void GenerateGrass()
     {
@@ -24,7 +24,7 @@ public class PlainsGenerator : MonoBehaviour, IGenerator
         {
             for (int j = 0; j < width; j++)
             {
-                botTilemap.SetTile(new Vector3Int(j, i, 0), tile);
+                BotTilemap.SetTile(new Vector3Int(j, i, 0), tile);
             }
         }
     }
@@ -37,7 +37,7 @@ public class PlainsGenerator : MonoBehaviour, IGenerator
             {
                 if (Random.Range(0, 200) < bushChance)
                 {
-                    topTilemap.SetTile(new Vector3Int(j, i, 0), bush);
+                    TopTilemap.SetTile(new Vector3Int(j, i, 0), bush);
                 }
             }
         }

@@ -9,9 +9,8 @@ public class ForestGenerator : MonoBehaviour, IGenerator
     [SerializeField] private int radius;
     [SerializeField] private float padding;
     [SerializeField] private int spawnTreeChance;
-
-    [SerializeField] private Tilemap topTilemap;
-    [SerializeField] private Tilemap botTilemap;
+    public Tilemap TopTilemap { get; set; }
+    public Tilemap BotTilemap { get; set; }
     private Vector2 center => new Vector2(radius - 0.5f, radius - 0.5f);
 
     public IBiom GetBiom()
@@ -31,7 +30,7 @@ public class ForestGenerator : MonoBehaviour, IGenerator
             {
                 if (Vector2.Distance(new Vector2(j, i), center) < radius - 0.5f)
                 {
-                    botTilemap.SetTile(new Vector3Int(j, i, 0), tile);
+                    BotTilemap.SetTile(new Vector3Int(j, i, 0), tile);
                 }
             }
         }
@@ -48,7 +47,7 @@ public class ForestGenerator : MonoBehaviour, IGenerator
                     if (Random.Range(0, 100) < spawnTreeChance)
                     {
                         var treeIndex = Random.Range(0, treeTiles.Length - 1);
-                        topTilemap.SetTile(new Vector3Int(j, i, 0), treeTiles[treeIndex]);
+                        TopTilemap.SetTile(new Vector3Int(j, i, 0), treeTiles[treeIndex]);
                     }
                 }
             }
