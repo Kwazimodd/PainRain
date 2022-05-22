@@ -12,7 +12,7 @@ public class Band : MonoBehaviour, IComponent
 
     public void Create()
     {
-        //use SpawnBand
+        Spawner.Instance.SpawnBand(this);
     }
 
     public List<GameObject> GetBand()

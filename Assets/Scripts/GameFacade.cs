@@ -24,8 +24,34 @@ public class GameFacade : MonoBehaviour
 
     public List<GameObject> MonsterList { get => monsterList; }
 
+    Director director;
+    BandBuilder bandBuilder;
+
     private void Start()
     {
-        
+        director = new Director();
+        bandBuilder = new BandBuilder();
+        director.Builder = bandBuilder;
+        InvokeRepeating(nameof(SpawnBand), 0, 10);
+        InvokeRepeating(nameof(SpawnAsotiation), 0, 60);
+    }
+
+    private void SpawnBand()
+    {
+        Composite composite = new Composite();
+        director.BuildRandomBand();
+        composite.Add(bandBuilder.GetBand());
+        composite.Create();
+    }
+
+    private void SpawnAsotiation()
+    {
+        Composite composite = new Composite();
+        for (int i = 0; i < 4; i++)
+        {
+            director.BuildRandomBand();
+            composite.Add(bandBuilder.GetBand());
+        }
+        composite.Create();
     }
 }
