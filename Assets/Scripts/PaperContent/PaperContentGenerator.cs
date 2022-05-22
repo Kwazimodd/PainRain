@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = System.Random;
 
 public class PaperContentGenerator : MonoBehaviour
 {
     [SerializeField] private PaperContentScriptableObject _paperContentScriptableObject;
+    [SerializeField] private int _method;
 
     private IPaperContentProvider _content;
     private List<string> _contentList;
@@ -16,30 +18,31 @@ public class PaperContentGenerator : MonoBehaviour
 
     private void Awake()
     {
-        if (_paperContentScriptableObject == null)
+        switch (_method)
         {
-            if (PaperContentFileSaver.IsFileExists)
-            {
-                _content = new PaperContentFromFile();
-            }
-            else
-            {
-                _content = new PaperContentFileSaver(new PaperContentProxy(new PaperContent()));
-            }
-        }
-        else
-        {
-            _content = _paperContentScriptableObject;
+            case 0:
+                _content = _paperContentScriptableObject;
+                break;
+            case 1:
+                if (PaperContentFileSaver.IsFileExists)
+                {
+                    _content = new PaperContentFromFile();
+                }
+                else
+                {
+                    _content = new PaperContentFileSaver(new PaperContentProxy(new PaperContent()));
+                }
+                break;
         }
 
         _randomString = RandomStrManager.GetRandomString(_content.GetContent().Count);
         _randomStringCopy = _randomString;
-        _contentList = new List<string>(_content.GetContent()); 
+        _contentList = new List<string>(_content.GetContent());
     }
 
     public void PickUpUser()
     {
-        var randomPaperIndex = new Random().Next(0, _contentList.Count-1);
+        var randomPaperIndex = new Random().Next(0, _contentList.Count - 1);
         MenuScript.Instance.PickUpAndAddPaper(new Tuple<String, String>
         (
             _contentList[randomPaperIndex],
