@@ -6,7 +6,7 @@ public class Player: BaseEntity
 {
     private bool _isOnPuddle = false;
     
-    public int Health
+    public float Health
     {
         get 
         {

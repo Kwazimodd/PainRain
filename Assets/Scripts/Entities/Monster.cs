@@ -63,7 +63,7 @@ public class Monster: BaseEntity
     
     
 
-    public override void GetDamage(uint damage)
+    public override void GetDamage(float damage)
     {
         if (_lastGetDamageTime >= _damageCooldown)
         {
