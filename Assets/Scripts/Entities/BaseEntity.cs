@@ -7,7 +7,7 @@ public abstract class BaseEntity : MonoBehaviour
     protected Collider2D _collider2D;
     protected Animator _animator;
     protected SpriteRenderer _spriteRenderer;
-    [SerializeField] protected int health;
+    [SerializeField] protected float health;
     [SerializeField] protected float moveSpeed;
 
     public Vector2 Velocity
@@ -28,9 +28,9 @@ public abstract class BaseEntity : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public virtual void GetDamage(uint damage)
+    public virtual void GetDamage(float damage)
     {
-        health -= (int)damage;
+        health -= damage;
         if (health <= 0) Kill();
     }
 
