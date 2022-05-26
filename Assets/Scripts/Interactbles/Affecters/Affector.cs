@@ -23,14 +23,16 @@ public abstract class Affector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player player = collision.GetComponent<Player>();
+        Player player = collision.gameObject.GetComponent<Player>();
 
-        if (player == null)
-            return;
+        if (player == null) 
+            return; 
 
         //playing audio
+        AudioSource.PlayClipAtPoint(sound, transform.position);
 
         //playing particles
+        ParticleSystem newParticleSystem = Instantiate(particleSystem, transform.position, Quaternion.identity);
 
         //performing action
         Affect(player);
