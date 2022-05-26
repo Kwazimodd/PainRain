@@ -2,8 +2,26 @@
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+public delegate void Action();
+
 public class Player: BaseEntity
 {
+    private static Player instance;
+
+    public static Player Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<Player>();
+            }
+            return instance;
+        }
+    }
+
+    public event Action OnPlayerDeath;
+
     private bool _isOnPuddle = false;
     
     public float Health
@@ -49,6 +67,6 @@ public class Player: BaseEntity
     protected override void Kill()
     {
         base.Kill();
-        SceneManager.LoadScene("GameMap", LoadSceneMode.Single);
+        OnPlayerDeath.Invoke();
     }
 }
