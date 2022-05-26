@@ -57,7 +57,7 @@ public class Monster: BaseEntity
     {
         if (other.gameObject.Equals(Target))
         {
-            other.gameObject.GetComponentInParent<BaseEntity>().GetDamage(_damage);
+            other.gameObject.GetComponentInParent<BaseEntity>().Damage(_damage);
             _rigidbody2D.AddForce(-Velocity.normalized*10, ForceMode2D.Impulse);
             _lastCollisionTime = 0;
         }
@@ -68,12 +68,12 @@ public class Monster: BaseEntity
         }
     }
 
-    public override void GetDamage(float damage)
+    public override void Damage(float damage)
     {
         if (_lastGetDamageTime >= _damageCooldown)
         {
             StartCoroutine(FlashLightMonster(this));
-            base.GetDamage(damage);
+            base.Damage(damage);
             _lastGetDamageTime = 0;
         }
     }
