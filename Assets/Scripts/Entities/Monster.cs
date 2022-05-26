@@ -8,12 +8,21 @@ public class Monster: BaseEntity
     [SerializeField] private float _followCooldown;
     [SerializeReference] private float _damageCooldown;
 
+    [SerializeField]
+    IMovementStrategy movementStrategy;
+
     public GameObject Target;
 
     public Spawner Spawner;
 
     private float _lastCollisionTime;
     private float _lastGetDamageTime;
+
+    private void Awake()
+    {
+        base.Awake();
+        movementStrategy = GetComponent<IMovementStrategy>();
+    }
 
     private void MoveToTarget()
     {
@@ -23,9 +32,7 @@ public class Monster: BaseEntity
             {
                 Vector2 targetPoint = Target.transform.position;
                 Vector3 monsterPosition = _rigidbody2D.transform.position;
-                Velocity =
-                    new Vector2(targetPoint.x - monsterPosition.x, targetPoint.y - monsterPosition.y).normalized *
-                    moveSpeed;
+                Velocity = movementStrategy.Move(targetPoint, monsterPosition, moveSpeed);
             }
         }
         catch (Exception e)
@@ -60,8 +67,6 @@ public class Monster: BaseEntity
             Velocity = Vector2.zero;
         }
     }
-    
-    
 
     public override void GetDamage(float damage)
     {
