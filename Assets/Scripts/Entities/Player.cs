@@ -25,6 +25,11 @@ public class Player: BaseEntity
         Velocity = velocityVector;
     }
 
+    public void IncreaseSpeed(float value)
+    {
+        moveSpeed += value;
+    }
+
     public void GetSlowDowned(float modifier) 
     {
         if (!_isOnPuddle) 
