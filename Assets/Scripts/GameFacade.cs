@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameFacade : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class GameFacade : MonoBehaviour
         director.Builder = bandBuilder;
         InvokeRepeating(nameof(SpawnBand), 0, 10);
         InvokeRepeating(nameof(SpawnAsotiation), 0, 60);
+
+        Player.Instance.OnPlayerDeath += RestartGame;
     }
 
     private void SpawnBand()
@@ -53,5 +56,10 @@ public class GameFacade : MonoBehaviour
             composite.Add(bandBuilder.GetBand());
         }
         composite.Create();
+    }
+
+    private void RestartGame()
+    {
+        SceneManager.LoadScene("GameMap", LoadSceneMode.Single);
     }
 }
