@@ -3,12 +3,16 @@ using UnityEngine;
 
 public abstract class BaseEntity : MonoBehaviour
 {
+    [SerializeField] protected float maxHealth;
+    [SerializeField] protected float health;
+
+    [SerializeField] protected float moveSpeed;
+
     protected Rigidbody2D _rigidbody2D;
     protected Collider2D _collider2D;
     protected Animator _animator;
     protected SpriteRenderer _spriteRenderer;
-    [SerializeField] protected float health;
-    [SerializeField] protected float moveSpeed;
+
 
     public Vector2 Velocity
     {
@@ -19,7 +23,7 @@ public abstract class BaseEntity : MonoBehaviour
             OnVelocityChange();
         }
     }
-    
+
     protected virtual void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -28,17 +32,31 @@ public abstract class BaseEntity : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public virtual void GetDamage(float damage)
+
+    public void IncreaseMaxHealth(float value)
     {
-        health -= damage;
-        if (health <= 0) Kill();
+        maxHealth += value;
+    }
+
+    public virtual void Heal(float value)
+    {
+        health += value;
+        if (health > maxHealth)
+            health = maxHealth;
+    }
+
+    public virtual void Damage(float value)
+    {
+        health -= value;
+        if (health <= 0)
+            Kill();
     }
 
     protected virtual void Kill()
     {
         GameObject.Destroy(gameObject);
     }
-    
+
     protected virtual void OnVelocityChange()
     {
         if (Velocity == Vector2.zero)
@@ -48,7 +66,7 @@ public abstract class BaseEntity : MonoBehaviour
         else
         {
             _animator.SetBool("Idle", false);
-            
+
             if ((int)Velocity.x > 0)
             {
                 _animator.SetInteger("move", 1);
@@ -59,7 +77,7 @@ public abstract class BaseEntity : MonoBehaviour
             }
             else if ((int)Velocity.y > 0)
             {
-                
+
                 _animator.SetInteger("move", 2);
             }
             else if ((int)Velocity.y < 0)

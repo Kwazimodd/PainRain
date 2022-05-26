@@ -50,7 +50,7 @@ public class DoDamage : PlayerAffecterDecorator
     public override void DoAffect(Player player)
     {
         base.DoAffect(player);
-        player.GetDamage(0.2f);
+        player.Damage(0.2f);
     }
 }
 

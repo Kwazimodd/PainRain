@@ -15,7 +15,7 @@ public class FlashlightAttacker : MonoBehaviour
         if(other.gameObject.TryGetComponent(typeof(Monster), out Component component))
         {
             Monster monster = component.GetComponent<Monster>();
-            monster.GetDamage(_damage);
+            monster.Damage(_damage);
         }
     }
 }
